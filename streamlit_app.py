@@ -11,4 +11,4 @@ st.text('\N{flexed biceps} Omega 3 and Blueberry Cereal')
 st.text('\N{green salad} Kale, Spinach & Rocket Smoothie')
 st.text('\N{egg} Hard-Boiled Free-Range Egg')
 
-streamlit.dataframe(my_fruit_list)
+st.dataframe(my_fruit_list)
