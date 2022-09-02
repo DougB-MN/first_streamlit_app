@@ -17,8 +17,4 @@ fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index),
 
 df = pd.DataFrame (fruits_selected, columns = ['Fruit'])
 
-st.write (df)
-
-fruits_to_show = my_fruit_list.loc(df)
-
-#st.dataframe(fruits_to_show)
+st.dataframe(df)
