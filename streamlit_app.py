@@ -19,8 +19,7 @@ df = pd.DataFrame (fruits_selected, columns = ['Fruit'])
 
 st.dataframe(df)
 
-fruityvice_response = r.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response.json())
+fruityvice_response = r.get("https://fruityvice.com/api/fruit/" + "kiwi")
 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
