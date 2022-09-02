@@ -18,7 +18,7 @@ fruits_to_show = my_fruit_list.loc('Watermelon')
 
 st.dataframe(fruits_to_show)
 
-fruityvice_response = r.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
+--fruityvice_response = r.get("https://fruityvice.com/api/fruit/watermelon")
+--st.text(fruityvice_response)
 
 
