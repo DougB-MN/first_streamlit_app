@@ -18,3 +18,7 @@ fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index),
 df = pd.DataFrame (fruits_selected, columns = ['Fruit'])
 
 st.dataframe(df)
+
+fruityvice_response = r.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
+
