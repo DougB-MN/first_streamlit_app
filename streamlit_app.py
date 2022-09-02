@@ -19,6 +19,6 @@ df = pd.DataFrame (fruits_selected, columns = ['Fruit'])
 
 st.write (df)
 
-#fruits_to_show = my_fruit_list.loc('Avocado')
+fruits_to_show = my_fruit_list.loc(df)
 
 #st.dataframe(fruits_to_show)
