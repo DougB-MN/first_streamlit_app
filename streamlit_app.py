@@ -15,7 +15,7 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Strawberries'])
 
-st.write (fruits_selected)
+st.write (fruits_selected.index)
 
 #fruits_to_show = my_fruit_list.loc('Avocado')
 
