@@ -22,3 +22,6 @@ st.dataframe(df)
 fruityvice_response = r.get("https://fruityvice.com/api/fruit/watermelon")
 st.text(fruityvice_response.json())
 
+fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+
+st.dataframe(fruityvice_normalized)
