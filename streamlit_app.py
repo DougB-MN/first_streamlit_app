@@ -4,7 +4,7 @@ import requests as r
 import snowflake.connector as sfc
 from urllib.error import URLError
 
-def get_fruityvice_data(this_fruit_choice)
+def get_fruityvice_data(this_fruit_choice):
     fruityvice_response = r.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
     return fruityvice_normalized
@@ -47,4 +47,4 @@ st.dataframe(my_data_row)
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
 
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('from streamlit')")
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values (add_my_fruit)")
