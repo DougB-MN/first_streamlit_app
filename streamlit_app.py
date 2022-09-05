@@ -4,6 +4,8 @@ import requests as r
 import snowflake.connector as sfc
 from urllib.error import URLError
 
+my_cnx = sfc.connect(**st.secrets["snowflake"])
+
 def get_fruityvice_data(this_fruit_choice):
     fruityvice_response = r.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
@@ -43,7 +45,6 @@ except URLError as e:
   st.error()
 
 if st.button('Get Fruit Load List'):
-    my_cnx = sfc.connect(**st.secrets["snowflake"])
     my_data_rows = get_fruit_load_list()
     st.dataframe(my_data_rows)
     st.header("The fruit_load_list contains:")
@@ -53,4 +54,4 @@ add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
 
 my_cur = my_cnx.cursor()
-my_cur.execute("select * from pc_rivery.public.fruit_load_list")my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
