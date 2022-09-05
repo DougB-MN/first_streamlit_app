@@ -45,10 +45,9 @@ except URLError as e:
   st.error()
 
 if st.button('Get Fruit Load List'):
+    st.header("The fruit_load_list contains:")
     my_data_rows = get_fruit_load_list()
     st.dataframe(my_data_rows)
-    st.header("The fruit_load_list contains:")
-    st.dataframe(my_data_row)
 
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
