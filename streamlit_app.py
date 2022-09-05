@@ -47,4 +47,4 @@ st.dataframe(my_data_row)
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
 
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values (" + add_my_fruit +"}")
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values (" + add_my_fruit +")")
