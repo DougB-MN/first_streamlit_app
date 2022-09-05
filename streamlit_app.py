@@ -3,12 +3,12 @@ import pandas as pd
 import requests as r
 import snowflake.connector as sfc
 
-my_cnx = sfc.connect(**streamlit.secrets["snowflake"])
+my_cnx = sfc.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select current_user(), current_account(),current_region()")
 my_data_row = my_cur.fetchone()
-streamlit.text("Hello from Snowflake:")
-streamlit.text(my_data_row)
+st.text("Hello from Snowflake:")
+st.text(my_data_row)
 
 st.title('My Parents New Healthy Diner')
 
