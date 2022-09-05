@@ -35,3 +35,5 @@ my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
 my_data_row = my_cur.fetchall()
 st.header("The fruit_load_list contains:")
 st.dataframe(my_data_row)
+
+add_my_fruit = st.text_input('What fruit would you like to add?', 'Kiwi')
