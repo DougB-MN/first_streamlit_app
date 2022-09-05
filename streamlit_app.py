@@ -49,8 +49,15 @@ if st.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     st.dataframe(my_data_rows)
 
-add_my_fruit = st.text_input('What fruit would you like to add?')
-st.write('Thanks for adding ', add_my_fruit)
+try:
+    add_my_fruit = st.text_input('What fruit would you like to add?')
+    if not add_my_fruit:
+        st.error("Please add a fruit to the list.")
+    else:
+        st.write('Thanks for adding ', add_my_fruit)
+        my_cur = my_cnx.cursor()
+        my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
+except URLError as e:
+        st.error()
 
-my_cur = my_cnx.cursor()
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
+
