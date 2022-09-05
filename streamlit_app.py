@@ -8,6 +8,11 @@ def get_fruityvice_data(this_fruit_choice):
     fruityvice_response = r.get("https://fruityvice.com/api/fruit/" + fruit_choice)
     fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
     return fruityvice_normalized
+
+def get_fruit_load_list():
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("select * from pc_rivery.public.fruit_load_list")
+        return my_cur.fetchall()
   
 st.title('My Parents New Healthy Diner')
 
@@ -37,12 +42,12 @@ try:
 except URLError as e:
   st.error()
 
-my_cnx = sfc.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
-my_data_row = my_cur.fetchall()
-st.header("The fruit_load_list contains:")
-st.dataframe(my_data_row)
+if st.button('Get Fruit Load List'):
+    my_cnx = sfc.connect(**st.secrets["snowflake"])
+    my_data_rows = get_fruit_load_list()
+    st.dataframe(my_data_rows)
+    st.header("The fruit_load_list contains:")
+    st.dataframe(my_data_row)
 
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
