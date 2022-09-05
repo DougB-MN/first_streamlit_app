@@ -3,13 +3,6 @@ import pandas as pd
 import requests as r
 import snowflake.connector as sfc
 
-my_cnx = sfc.connect(**st.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select current_user(), current_account(),current_region()")
-my_data_row = my_cur.fetchone()
-st.text("Hello from Snowflake:")
-st.text(my_data_row)
-
 st.title('My Parents New Healthy Diner')
 
 st.header('Breakfast Menu')
@@ -35,3 +28,10 @@ fruityvice_response = r.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 
 st.dataframe(fruityvice_normalized)
+
+my_cnx = sfc.connect(**st.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("select * from fruit_load_list")
+my_data_row = my_cur.fetchone()
+st.text("The fruit_load_list contains:")
+st.text(my_data_row)
