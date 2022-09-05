@@ -3,7 +3,7 @@ import pandas as pd
 import requests as r
 import snowflake.connector as sfc
 
-my_cnx = sfc.connector.connect(**streamlit.secrets["snowflake"])
+my_cnx = sfc.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("select current_user(), current_account(),current_region()")
 my_data_row = my_cur.fetchone()
