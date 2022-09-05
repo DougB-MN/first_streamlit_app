@@ -52,4 +52,5 @@ if st.button('Get Fruit Load List'):
 add_my_fruit = st.text_input('What fruit would you like to add?')
 st.write('Thanks for adding ', add_my_fruit)
 
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
+my_cur = my_cnx.cursor()
+my_cur.execute("select * from pc_rivery.public.fruit_load_list")my_cur.execute("insert into pc_rivery_db.public.fruit_load_list values ('" + add_my_fruit +"')")
