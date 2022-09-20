@@ -31,9 +31,9 @@ my_fruit_list = my_fruit_list.set_index('Fruit')
 
 fruits_selected = st.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado','Strawberries'])
 
-df = pd.DataFrame (data=fruits_selected)
+df = pd.DataFrame (fruits_selected, columns = ['Fruit'])
 
-st.dataframe(df)
+st.dataframe(data=fruits_selected)
 
 st.header('Fruityvice Fruit Advice!')
 try:
